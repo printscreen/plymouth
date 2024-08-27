@@ -1,0 +1,97 @@
+release: 'development'
+http:
+    host: 'localhost'
+    port: 8080
+    # 3 minute timeout in MS
+    timeout: 180000
+
+domain: localhost:3000
+
+verification:
+    email:
+        ttl: 3600
+
+services:
+    email: http://localhost:8089
+
+cookies:
+    secret: test
+    options:
+        secure: false
+        httpOnly: true
+        sameSite: true
+        maxAge: 31536000000
+        expires: false
+        domain: .qaplymouth.com
+    accessToken:
+        name: bk_acc
+    idToken:
+        name: bk_id
+
+oauth:
+    google:
+        clientId: test
+        secret: test
+        callbackUrl: http://localhost:3000/auth/google-redirect
+    facebook:
+        clientId: test
+        secret: test
+        appToken: test
+    apple:
+        audience: com.plymouth.qa
+
+clients:
+    consumer:
+        name: plymouth
+        userPoolId: local_1f5kts7y
+        clientId: 0662ly7jwsbo87mbhnpzhyusz
+        publicAuthority: http://localhost:9229/local_1f5kts7y
+        cookieName: bk_acc
+    service:
+        name: plymouthservicepoolclient
+        userPoolId: local_7lAFrLc7
+        clientId: 4yz8ha20tylgj4kjljyv4nykk
+        clientSecret: c203vm1lpyji3p9zrwihevxn9
+        publicAuthority: http://localhost:9229/local_7lAFrLc7
+
+aws:
+    cognito:
+        region: us-east-1
+        endpoint: http://localhost:9229
+        credentials:
+            accessKeyId: local
+            secretAccessKey: local
+    s3:
+        region: us-east-1
+        endpoint: http://localhost:4571
+        credentials:
+            accessKeyId: local
+            secretAccessKey: local
+
+db:
+    postgres:
+        database: 'plymouth_local'
+        useSsl: false
+        read:
+            port: 5434
+            host: localhost
+            user: local
+            password: local
+        write:
+            port: 5434
+            host: localhost
+            user: local
+            password: local
+
+dynamoDb:
+    region: us-east-1
+    credentials:
+        accessKeyId: local
+        secretAccessKey: local
+    endpoint: http://localhost:8003
+
+sentry:
+    dsn: ''
+    debug: true
+    level: 'debug'
+    environment: 'development'

@@ -1,0 +1,8 @@
+{
+  "INTERNAL_SERVER_ERROR": "Internal Server Error",
+  "INVALID_TOKEN": "Invalid Token",
+  "USER_NOT_FOUND": "User not found",
+  "EMAIL_ASSOCIATED_TO_ANOTHER_ACCOUNT": "Email associated to another account",
+  "INVALID_CREDENTIALS": "Invalid credentials",
+  "FORBIDDEN": "Forbidden"
+}

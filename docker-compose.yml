@@ -1,0 +1,63 @@
+version: '2'
+services:
+    fake-server:
+        image: ricc/http-devnull
+        ports:
+            - 8089:80
+    s3:
+        image: lphoward/fake-s3
+        ports:
+            - 4571:4569
+    cognito:
+        image: backitinc/cognito-local:latest
+        ports:
+            - 9229:9229
+        volumes:
+            - ./src/config/cognito:/app/.cognito
+    dynamo:
+        image: deangiberson/aws-dynamodb-local
+        ports:
+            - 8003:8000
+    db:
+        image: postgres:14.3
+        restart: always
+        environment:
+            - POSTGRES_USER=local
+            - POSTGRES_PASSWORD=local
+            - POSTGRES_DB=plymouth_local
+        ports:
+            - 5434:5432
+    db-migration:
+        build:
+            context: .
+            dockerfile: ./docker/db/Dockerfile
+        environment:
+            - NODE_ENV=local-migration
+            - POSTGRES_HOST=db.localhost
+            - POSTGRES_USER=local
+            - POSTGRES_PASSWORD=local
+            - POSTGRES_DB=plymouth_local
+            - POSTGRES_TEST_DB=plymouth_local
+            - POSTGRES_PORT=5432
+        command:
+            - /bin/bash
+            - -c
+            - |
+                wait-for-pg
+                npm run build
+                npm run migrate
+                npx ts-node ./build/build.ts
+        working_dir: /api
+        volumes:
+            - .:/api
+            - /node_modules/
+        depends_on:
+            - db
+            - cognito
+            - dynamo
+            - s3
+        links:
+            - db:db.localhost
+            - s3:s3.localhost
+            - cognito:cognito.localhost
+            - dynamo:dynamo.localhost

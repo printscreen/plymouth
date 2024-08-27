@@ -1,0 +1,57 @@
+{
+  "Clients": {
+    "0662ly7jwsbo87mbhnpzhyusz": {
+      "AllowedOAuthFlows": [
+        "code",
+        "implicit",
+        "client_credentials"
+      ],
+      "AllowedOAuthScopes": [
+        "phone",
+        "email",
+        "openid",
+        "profile"
+      ],
+      "ClientId": "0662ly7jwsbo87mbhnpzhyusz",
+      "ClientName": "plymouth",
+      "ClientSecret": "8ls4wrnzgice9bny6z1ry1dz3",
+      "CreationDate": "2023-05-21T05:24:51.762Z",
+      "EnableTokenRevocation": true,
+      "LastModifiedDate": "2023-05-21T05:24:51.762Z",
+      "SupportedIdentityProviders": [
+        "COGNITO",
+        "Facebook",
+        "Google",
+        "SignInWithApple"
+      ],
+      "TokenValidityUnits": {
+        "AccessToken": "hours",
+        "IdToken": "minutes",
+        "RefreshToken": "days"
+      },
+      "UserPoolId": "local_1f5kts7y"
+    },
+    "4yz8ha20tylgj4kjljyv4nykk": {
+      "AllowedOAuthFlows": [
+        "client_credentials"
+      ],
+      "AllowedOAuthFlowsUserPoolClient": true,
+      "AllowedOAuthScopes": [
+        "email:send",
+        "test"
+      ],
+      "ClientId": "4yz8ha20tylgj4kjljyv4nykk",
+      "ClientName": "plymouthservicepoolclient",
+      "ClientSecret": "c203vm1lpyji3p9zrwihevxn9",
+      "CreationDate": "2024-03-31T21:54:40.910Z",
+      "EnableTokenRevocation": true,
+      "LastModifiedDate": "2024-03-31T21:54:40.910Z",
+      "TokenValidityUnits": {
+        "AccessToken": "hours",
+        "IdToken": "minutes",
+        "RefreshToken": "days"
+      },
+      "UserPoolId": "local_7lAFrLc7"
+    }
+  }
+}

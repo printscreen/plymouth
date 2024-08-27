@@ -1,0 +1,23 @@
+release: 'local-migration'
+
+aws:
+    region: 'us-east-1'
+    endpoint: 'http://localhost:4566'
+    sslEnabled: false
+    accessKeyId: 'test'
+    secretAccessKey: 'test'
+
+db:
+    postgres:
+        database: 'plymouth_local'
+        useSsl: false
+        read:
+            port: 5432
+            host: db.localhost
+            user: local
+            password: local
+        write:
+            port: 5432
+            host: db.localhost
+            user: local
+            password: local
